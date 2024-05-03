@@ -3,4 +3,6 @@
 
     <string name="initial_value">0</string>
     <string name="finish_value">10</string>
+    <string name="increment">increment</string>
+    <string name="reset">reset</string>
 </resources>

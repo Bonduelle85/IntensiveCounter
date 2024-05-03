@@ -6,6 +6,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.IsNot.not
@@ -19,6 +20,7 @@ class ResetButtonUi(
         allOf(
             ViewMatchers.withId(R.id.resetButton),
             ViewMatchers.isAssignableFrom(AppCompatButton::class.java),
+            withText(R.string.reset),
             rootIdMatcher,
             parentLayoutMatcher,
         )

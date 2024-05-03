@@ -7,6 +7,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 
@@ -19,6 +20,7 @@ class IncrementButtonUi(
         allOf(
             withId(R.id.incrementButton),
             isAssignableFrom(AppCompatButton::class.java),
+            withText(R.string.increment),
             rootIdMatcher,
             parentLayoutMatcher,
         )

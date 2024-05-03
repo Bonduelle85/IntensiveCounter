@@ -3,7 +3,6 @@ package com.example.intensivecounter
 import android.view.View
 import android.widget.TextView
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -26,7 +25,7 @@ class CounterTextViewUi(
 
     private val interaction = Espresso.onView(
         allOf(
-            withId(R.id.counterVextView),
+            withId(R.id.counterTextView),
             isAssignableFrom(TextView::class.java),
             rootIdMatcher,
             parentLayoutMatcher,
