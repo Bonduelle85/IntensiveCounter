@@ -36,10 +36,10 @@ class CounterPage {
     }
 
     fun clickIncrement() {
-        incrementButton.clickIncrement()
+        incrementButton.click()
     }
 
     fun clickReset() {
-        resetButton.clickReset()
+        resetButton.click()
     }
 }

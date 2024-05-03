@@ -1,9 +1,8 @@
 package com.example.intensivecounter
 
 import android.view.View
-import android.widget.Button
+import androidx.appcompat.widget.AppCompatButton
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -19,7 +18,7 @@ class ResetButtonUi(
     private val interaction = onView(
         allOf(
             ViewMatchers.withId(R.id.resetButton),
-            ViewMatchers.isAssignableFrom(Button::class.java),
+            ViewMatchers.isAssignableFrom(AppCompatButton::class.java),
             rootIdMatcher,
             parentLayoutMatcher,
         )
@@ -37,7 +36,7 @@ class ResetButtonUi(
         interaction.check(matches(isDisplayed()))
     }
 
-    fun clickReset() {
-        interaction.perform(click())
+    fun click() {
+        interaction.perform(androidx.test.espresso.action.ViewActions.click())
     }
 }

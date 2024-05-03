@@ -1,9 +1,8 @@
 package com.example.intensivecounter
 
 import android.view.View
-import android.widget.Button
+import androidx.appcompat.widget.AppCompatButton
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
@@ -19,7 +18,7 @@ class IncrementButtonUi(
     private val interaction = Espresso.onView(
         allOf(
             withId(R.id.incrementButton),
-            isAssignableFrom(Button::class.java),
+            isAssignableFrom(AppCompatButton::class.java),
             rootIdMatcher,
             parentLayoutMatcher,
         )
@@ -37,7 +36,7 @@ class IncrementButtonUi(
         interaction.check(ViewAssertions.matches(ViewMatchers.isNotEnabled()))
     }
 
-    fun clickIncrement() {
-        interaction.perform(click())
+    fun click() {
+        interaction.perform(androidx.test.espresso.action.ViewActions.click())
     }
 }
