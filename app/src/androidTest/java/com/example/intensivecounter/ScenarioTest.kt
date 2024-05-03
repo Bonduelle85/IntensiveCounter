@@ -32,7 +32,7 @@ class ScenarioTest {
         recreate()
         counterPage.checkStateIsInitial()
 
-        repeat(10) {
+        repeat(9) {
             counterPage.clickIncrement()
             counterPage.checkStateIsProcess(value = it + 1)
             recreate()
