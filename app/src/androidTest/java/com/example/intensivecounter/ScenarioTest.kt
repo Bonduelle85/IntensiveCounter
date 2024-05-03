@@ -28,25 +28,25 @@ class ScenarioTest {
     @Test
     fun testCase() {
         val counterPage = CounterPage()
-        counterPage.checkStateIsInitial()
+        counterPage.checkStateIsInitial(value = 0)
         recreate()
-        counterPage.checkStateIsInitial()
+        counterPage.checkStateIsInitial(value = 0)
 
         counterPage.clickIncrement()
-        counterPage.checkStateIsProcess()
+        counterPage.checkStateIsProcess(value = 1)
         recreate()
-        counterPage.checkStateIsProcess()
+        counterPage.checkStateIsProcess(value = 1)
 
         repeat(9) {
             counterPage.clickIncrement()
         }
-        counterPage.checkStateIsFinish()
+        counterPage.checkStateIsFinish(value = 10)
         recreate()
-        counterPage.checkStateIsFinish()
+        counterPage.checkStateIsFinish(value = 10)
 
         counterPage.clickReset()
-        counterPage.checkStateIsInitial()
+        counterPage.checkStateIsInitial(value = 0)
         recreate()
-        counterPage.checkStateIsInitial()
+        counterPage.checkStateIsInitial(value = 0)
     }
 }
