@@ -33,12 +33,10 @@ class ScenarioTest {
         counterPage.checkStateIsInitial()
 
         repeat(10) {
-            var n = 0
             counterPage.clickIncrement()
-            n++
-            counterPage.checkStateIsProcess(value = n)
+            counterPage.checkStateIsProcess(value = it)
             recreate()
-            counterPage.checkStateIsProcess(value = n)
+            counterPage.checkStateIsProcess(value = it)
         }
 
         counterPage.checkStateIsFinish()
