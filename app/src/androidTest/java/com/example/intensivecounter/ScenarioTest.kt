@@ -39,6 +39,7 @@ class ScenarioTest {
             counterPage.checkStateIsProcess(value = it + 1)
         }
 
+        counterPage.clickIncrement()
         counterPage.checkStateIsFinish()
         recreate()
         counterPage.checkStateIsFinish()
