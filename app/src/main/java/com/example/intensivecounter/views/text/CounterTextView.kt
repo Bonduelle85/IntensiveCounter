@@ -27,7 +27,7 @@ class CounterTextView : AppCompatTextView, UpdateCounter {
     }
 
     override fun updateUi(counterValue: Int, colorResId: Int) {
-        this.setText(counterValue)
+        this.setText(counterValue.toString())
         this.setTextColor(ContextCompat.getColor(context, colorResId))
     }
 
