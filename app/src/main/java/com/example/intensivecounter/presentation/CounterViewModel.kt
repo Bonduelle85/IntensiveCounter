@@ -6,13 +6,16 @@ class CounterViewModel(
     private val repository: Repository
 ) {
 
-    fun init(): UiState {
-        return UiState.Initial
+    fun init(isFirstTime: Boolean = true): UiState {
+        return if (isFirstTime)
+            UiState.Initial
+        else
+            UiState.Empty
     }
 
     fun increment(): UiState {
         repository.increment()
-        return if (repository.getCounter() == 10)
+        return if (repository.isMax())
             UiState.Finish
         else
             UiState.Process(repository.getCounter())

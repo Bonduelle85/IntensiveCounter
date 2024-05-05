@@ -14,29 +14,25 @@ class MainActivity : AppCompatActivity() {
         lateinit var uiState: UiState
         val viewModel = (application as CounterApp).viewModel
 
-        binding.incrementButton.setOnClickListener {
-            uiState = viewModel.increment()
+        val showUi: () -> Unit = {
             uiState.update(
                 updateCounter = binding.counterTextView,
                 updateIncrement = binding.incrementButton,
                 updateReset = binding.resetButton
             )
+        }
+
+        binding.incrementButton.setOnClickListener {
+            uiState = viewModel.increment()
+            showUi.invoke()
         }
 
         binding.resetButton.setOnClickListener {
             uiState = viewModel.reset()
-            uiState.update(
-                updateCounter = binding.counterTextView,
-                updateIncrement = binding.incrementButton,
-                updateReset = binding.resetButton
-            )
+            showUi.invoke()
         }
 
-        viewModel.init()
-        uiState.update(
-            updateCounter = binding.counterTextView,
-            updateIncrement = binding.incrementButton,
-            updateReset = binding.resetButton
-        )
+        uiState = viewModel.init(savedInstanceState == null)
+        showUi.invoke()
     }
 }

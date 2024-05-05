@@ -48,9 +48,9 @@ class FakeRepository: Repository {
 
     private var counter: Int = 0
 
-    override fun getCounter(): Int {
-        return counter
-    }
+    override fun getCounter(): Int = counter
+
+    override fun isMax(): Boolean = counter == 10
 
     override fun increment() {
         counter++
