@@ -1,7 +1,6 @@
 package com.example.intensivecounter.views.text
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Parcelable
 import android.util.AttributeSet
 import androidx.annotation.ColorRes

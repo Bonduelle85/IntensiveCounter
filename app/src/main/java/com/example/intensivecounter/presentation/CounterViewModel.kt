@@ -22,6 +22,7 @@ class CounterViewModel(
     }
 
     fun reset(): UiState {
+        repository.reset()
         return UiState.Initial
     }
 }
