@@ -8,15 +8,15 @@ interface CounterUiState : Serializable {
 
     fun show(counterTextView: UpdateCounter)
 
-    abstract class Abstract(private val textId: Int, private val color: Int) : CounterUiState {
+    abstract class Abstract(private val counterValue: Int, private val color: Int) : CounterUiState {
         override fun show(counterTextView: UpdateCounter) {
-            counterTextView.updateUi(textId = textId, color = color)
+            counterTextView.updateUi(counterValue = counterValue, colorResId = color)
         }
     }
 
-    object Initial : Abstract(R.string.initial_value, R.color.green)
+    object Initial : Abstract(0, R.color.green)
 
-    data class Process(private val value: Int) : Abstract(textId = value, R.color.black)
+    data class Process(private val value: Int) : Abstract(counterValue = value, R.color.black)
 
-    object Finish : Abstract(R.string.finish_value, R.color.red)
+    object Finish : Abstract(10, R.color.red)
 }

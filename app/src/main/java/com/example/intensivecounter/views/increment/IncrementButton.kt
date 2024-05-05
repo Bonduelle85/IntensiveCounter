@@ -22,8 +22,8 @@ class IncrementButton : AppCompatButton, UpdateIncrement {
         uiState.show(this)
     }
 
-    override fun updateUi(isEnable: Boolean) {
-        this.isEnabled = isEnable
+    override fun updateUi(isEnabled: Boolean) {
+        this.isEnabled = isEnabled
     }
 
     override fun onSaveInstanceState(): Parcelable? {
@@ -43,5 +43,5 @@ class IncrementButton : AppCompatButton, UpdateIncrement {
 
 interface UpdateIncrement {
     fun updateUiState(outer: IncrementUiState)
-    fun updateUi(isEnable: Boolean)
+    fun updateUi(isEnabled: Boolean)
 }

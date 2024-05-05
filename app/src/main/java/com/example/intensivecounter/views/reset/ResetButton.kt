@@ -3,7 +3,9 @@ package com.example.intensivecounter.views.reset
 import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+import androidx.lifecycle.ViewModelProvider
 
 class ResetButton : AppCompatButton, UpdateReset {
 
@@ -22,8 +24,8 @@ class ResetButton : AppCompatButton, UpdateReset {
         uiState.show(this)
     }
 
-    override fun updateUi(isEnable: Boolean) {
-        this.isEnabled = isEnable
+    override fun updateUi(isVisible: Boolean) {
+        if (isVisible) this.visibility = View.VISIBLE else this.visibility = View.INVISIBLE
     }
 
     override fun onSaveInstanceState(): Parcelable? {
@@ -43,5 +45,5 @@ class ResetButton : AppCompatButton, UpdateReset {
 
 interface UpdateReset {
     fun updateUiState(outer: ResetUiState)
-    fun updateUi(visibility: Boolean)
+    fun updateUi(isVisible: Boolean)
 }

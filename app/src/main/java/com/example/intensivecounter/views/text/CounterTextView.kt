@@ -1,10 +1,12 @@
 package com.example.intensivecounter.views.text
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Parcelable
 import android.util.AttributeSet
-import androidx.annotation.StringRes
+import androidx.annotation.ColorRes
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
 
 class CounterTextView : AppCompatTextView, UpdateCounter {
 
@@ -24,9 +26,9 @@ class CounterTextView : AppCompatTextView, UpdateCounter {
         uiState.show(this)
     }
 
-    override fun updateUi(textId: Int, color: Int) {
-        this.setText(textId)
-        this.setTextColor(color)
+    override fun updateUi(counterValue: Int, colorResId: Int) {
+        this.setText(counterValue)
+        this.setTextColor(ContextCompat.getColor(context, colorResId))
     }
 
     override fun onSaveInstanceState(): Parcelable? {
@@ -46,5 +48,5 @@ class CounterTextView : AppCompatTextView, UpdateCounter {
 
 interface UpdateCounter {
     fun updateUiState(outer: CounterUiState)
-    fun updateUi(@StringRes textId: Int, color: Int)
+    fun updateUi(counterValue: Int, @ColorRes colorResId: Int)
 }

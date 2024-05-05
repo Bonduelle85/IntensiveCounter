@@ -7,15 +7,15 @@ interface IncrementUiState : Serializable {
 
     fun show(incrementButton: UpdateIncrement)
 
-    abstract class Abstract(private val isEnabled: Boolean) : IncrementUiState {
+    abstract class Abstract(private val isEnabled: Boolean = true) : IncrementUiState {
         override fun show(incrementButton: UpdateIncrement) {
-            incrementButton.updateUi(isEnable = isEnabled)
+            incrementButton.updateUi(isEnabled = isEnabled)
         }
     }
 
-    object Initial : Abstract(isEnabled = true)
+    object Initial : Abstract()
 
-    object Process : Abstract(isEnabled = true)
+    object Process : Abstract()
 
     object Finish : Abstract(isEnabled = false)
 }

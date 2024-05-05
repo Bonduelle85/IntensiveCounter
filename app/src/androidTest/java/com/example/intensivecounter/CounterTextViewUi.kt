@@ -16,13 +16,6 @@ class CounterTextViewUi(
     parentLayoutMatcher: Matcher<View>
 ) {
 
-    private val initialValue = R.string.initial_value
-    private val finishValue = R.string.finish_value
-
-    private val red = R.color.red
-    private val green = R.color.green
-    private val black = R.color.black
-
     private val interaction = Espresso.onView(
         allOf(
             withId(R.id.counterTextView),
@@ -34,16 +27,21 @@ class CounterTextViewUi(
 
 
     fun checkStateIsInitial() {
+        val initialValue = 0
+        val green = R.color.green
         interaction.check(matches(withText(initialValue)))
             .check(matches(TextViewColorMatcher(green)))
     }
 
     fun checkStateIsProcess(value: Int) {
+        val black = R.color.black
         interaction.check(matches(withText(value)))
             .check(matches(TextViewColorMatcher(black)))
     }
 
     fun checkStateIsFinish() {
+        val finishValue = 10
+        val red = R.color.red
         interaction.check(matches(withText(finishValue)))
             .check(matches(TextViewColorMatcher(red)))
     }

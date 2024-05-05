@@ -6,15 +6,15 @@ interface ResetUiState : Serializable {
 
     fun show(resetButton: UpdateReset)
 
-    abstract class Abstract(private val isVisible: Boolean) : ResetUiState {
+    abstract class Abstract(private val isVisible: Boolean = false) : ResetUiState {
         override fun show(resetButton: UpdateReset) {
-            resetButton.updateUi(visibility = isVisible)
+            resetButton.updateUi(isVisible = isVisible)
         }
     }
 
-    object Initial : Abstract(isVisible = false)
+    object Initial : Abstract()
 
-    object Process : Abstract(isVisible = false)
+    object Process : Abstract()
 
     object Finish : Abstract(isVisible = true)
 }
