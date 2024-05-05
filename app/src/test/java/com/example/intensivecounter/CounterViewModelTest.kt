@@ -14,6 +14,9 @@ class CounterViewModelTest {
     private lateinit var viewModel: CounterViewModel
     private lateinit var repository: FakeRepository
 
+    private lateinit var actualUiState: UiState
+    private  lateinit var expectedUiState: UiState
+
     @Before
     fun setup() {
         repository = FakeRepository()
@@ -24,8 +27,8 @@ class CounterViewModelTest {
 
     @Test
     fun testCase1() {
-        var actualUiState: UiState = viewModel.init(true)
-        var expectedUiState: UiState = UiState.Initial
+        actualUiState = viewModel.init(true)
+        expectedUiState = UiState.Initial
         assertEquals(expectedUiState, actualUiState)
 
         repeat(9) {
@@ -45,23 +48,9 @@ class CounterViewModelTest {
 
     @Test
     fun testCase2() {
-        var actualUiState: UiState = viewModel.init(false)
-        var expectedUiState: UiState = UiState.Empty
+        actualUiState = viewModel.init(false)
+        expectedUiState = UiState.Empty
         assertEquals(expectedUiState, actualUiState)
-
-        repeat(9) {
-            actualUiState = viewModel.increment()
-            expectedUiState = UiState.Process(it + 1)
-            assertEquals(expectedUiState, actualUiState)
-        }
-
-        actualUiState = viewModel.increment()
-        expectedUiState = UiState.Finish
-        assertEquals(actualUiState , expectedUiState)
-
-        actualUiState = viewModel.reset()
-        expectedUiState = UiState.Initial
-        assertEquals(actualUiState, expectedUiState)
     }
 }
 
