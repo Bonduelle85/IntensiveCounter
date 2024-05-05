@@ -29,7 +29,7 @@ class CounterTextViewUi(
     fun checkStateIsInitial() {
         val initialValue = 0
         val green = R.color.green
-        interaction.check(matches(withText(initialValue)))
+        interaction.check(matches(withText(initialValue.toString())))
             .check(matches(TextViewColorMatcher(green)))
     }
 
@@ -42,7 +42,7 @@ class CounterTextViewUi(
     fun checkStateIsFinish() {
         val finishValue = 10
         val red = R.color.red
-        interaction.check(matches(withText(finishValue)))
+        interaction.check(matches(withText(finishValue.toString())))
             .check(matches(TextViewColorMatcher(red)))
     }
 }
