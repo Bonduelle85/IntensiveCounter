@@ -35,7 +35,7 @@ class CounterTextViewUi(
 
     fun checkStateIsProcess(value: Int) {
         val black = R.color.black
-        interaction.check(matches(withText(value)))
+        interaction.check(matches(withText(value.toString())))
             .check(matches(TextViewColorMatcher(black)))
     }
 
