@@ -9,7 +9,7 @@ import org.hamcrest.Matcher
 
 class CounterPage {
 
-    private val rootIdMatcher: Matcher<View> = withId(R.id.rootLayout)
+    private val rootIdMatcher: Matcher<View> = withParent(withId(R.id.rootLayout))
     private val parentLayoutMatcher: Matcher<View> = withParent(isAssignableFrom(LinearLayout::class.java))
 
     private val counter = CounterTextViewUi(rootIdMatcher, parentLayoutMatcher)
