@@ -48,6 +48,10 @@ class CounterViewModelTest {
 
     @Test
     fun testCase2() {
+        actualUiState = viewModel.init(true)
+        expectedUiState = UiState.Initial
+        assertEquals(expectedUiState, actualUiState)
+
         actualUiState = viewModel.init(false)
         expectedUiState = UiState.Empty
         assertEquals(expectedUiState, actualUiState)
