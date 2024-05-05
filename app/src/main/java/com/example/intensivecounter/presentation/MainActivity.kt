@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         val showUi: () -> Unit = {
             uiState.update(
-                updateCounter = binding.counterTextView,
-                updateIncrement = binding.incrementButton,
-                updateReset = binding.resetButton
+                counterTextView = binding.counterTextView,
+                incrementButton = binding.incrementButton,
+                resetButton = binding.resetButton
             )
         }
 
