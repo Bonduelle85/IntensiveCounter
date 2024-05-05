@@ -24,5 +24,4 @@ class CounterViewModel(
     fun reset(): UiState {
         return UiState.Initial
     }
-
 }

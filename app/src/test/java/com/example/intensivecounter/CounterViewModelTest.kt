@@ -23,9 +23,30 @@ class CounterViewModelTest {
     }
 
     @Test
-    fun testCase() {
-        var actualUiState: UiState = viewModel.init()
+    fun testCase1() {
+        var actualUiState: UiState = viewModel.init(true)
         var expectedUiState: UiState = UiState.Initial
+        assertEquals(expectedUiState, actualUiState)
+
+        repeat(9) {
+            actualUiState = viewModel.increment()
+            expectedUiState = UiState.Process(it + 1)
+            assertEquals(expectedUiState, actualUiState)
+        }
+
+        actualUiState = viewModel.increment()
+        expectedUiState = UiState.Finish
+        assertEquals(actualUiState , expectedUiState)
+
+        actualUiState = viewModel.reset()
+        expectedUiState = UiState.Initial
+        assertEquals(actualUiState, expectedUiState)
+    }
+
+    @Test
+    fun testCase2() {
+        var actualUiState: UiState = viewModel.init(false)
+        var expectedUiState: UiState = UiState.Empty
         assertEquals(expectedUiState, actualUiState)
 
         repeat(9) {
