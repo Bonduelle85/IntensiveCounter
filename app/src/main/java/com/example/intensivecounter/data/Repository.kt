@@ -7,21 +7,34 @@ interface Repository {
     fun increment()
     fun reset()
 
-    class Base : Repository {
+    class Base(
+        private val permanentStorage: PermanentStorage
+    ) : Repository {
         override fun getCounter(): Int {
-            TODO("Not yet implemented")
+            return permanentStorage.read(KEY, DEFAULT_VALUE)
         }
 
         override fun isMax(): Boolean {
-            TODO("Not yet implemented")
+            val value = permanentStorage.read(KEY, DEFAULT_VALUE)
+            return value == COUNTER_MAX_VALUE
         }
 
         override fun increment() {
-            TODO("Not yet implemented")
+            val oldValue = permanentStorage.read(KEY, DEFAULT_VALUE)
+            val newValue = oldValue + 1
+            permanentStorage.save(newValue, KEY)
         }
 
         override fun reset() {
-            TODO("Not yet implemented")
+            permanentStorage.save(INITIAL_VALUE, KEY)
+        }
+
+
+        companion object{
+            const val KEY = "key"
+            const val INITIAL_VALUE = 0
+            const val DEFAULT_VALUE = 0
+            const val COUNTER_MAX_VALUE = 10
         }
     }
 }
